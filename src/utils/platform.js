@@ -2,13 +2,13 @@ import * as common from '@/utils/common'
 import * as store from '../store/index'
 import Vue from 'vue'
 
-const config = require(`@/configs/basic/${process.env.VUE_APP_BASIC_TYPE}.js`).defaultConfig
+// const config = require(`@/configs/basic/${process.env.VUE_APP_BASIC_TYPE}.js`).defaultConfig
+const config = ''
 
-
-export function showMsg(html, fun, cancel = false, otherBtn) {
+export function showMsg(title, html, fun, cancel = false, otherBtn) {
     const body = document.getElementsByTagName('body')[0];
     body.style = "overflow:hidden"
-    Vue.prototype.$bus.$emit("showMsg", html, fun, cancel, otherBtn);
+    Vue.prototype.$bus.$emit("showMsg",title, html, fun, cancel, otherBtn);
 }
 
 export function showToast(msg){

@@ -13,26 +13,22 @@ export default {
         this.msg = msg
         console.log(msg,'msg');
         this.showToast = true
-        let time = msg.length > 15 ? 1500 : 800
+        let time = msg.length > 15 ? 2000 : 1500
         setTimeout(()=>{
           this.showToast = false
           this.msg =''
         },time)
-        
         if(callback){
-              callback()
+          callback()
         }
-       
       })
     },
-
     data(){
       return {
         msg:'',
         showToast:false
       }
     },
-    
     destroy(){
       this.$bus.$off('toast');
     }
@@ -45,10 +41,12 @@ export default {
   display:flex;
   justify-content:center;
   align-items:center;
+  color: #fff;
   &__info{
-    padding:10px;
-    border-radius:5px;
-    background:rgba(#000,.6);
+    padding:10px 30px;
+    border-radius:15px;
+    font-size: 13px;
+    background:rgba(rgb(216, 152, 208),.9);
   }
 }
 </style>

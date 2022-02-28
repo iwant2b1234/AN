@@ -29,7 +29,6 @@ export default {
     border-radius: 50px;
     width: 200px;
     margin: auto;
-    padding: 15px 0;
     transition: all 0.3s;
     text-align: center;
     cursor: pointer;
@@ -37,6 +36,7 @@ export default {
     a{
       display: flex;
       justify-content: center;
+      padding: 15px 0;
       align-items: center;
     }
     &:hover {

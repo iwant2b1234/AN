@@ -1,35 +1,35 @@
 .icon{
-    &[name="location"]:before {
+    &[name="location"]:before {//map
         content: "\e64c";
     };
-    &[name="delete"]:before {
+    &[name="delete"]:before {//黑底Ｘ
         content: "\e633";
     };
-    &[name="team"]:before {
+    &[name="team"]:before {//team
         content: "\e60f";
     };
-    &[name="time1"]:before {
+    &[name="time1"]:before {//日曆
         content: "\e64e";
     };
-    &[name="setting"]:before {
+    &[name="setting"]:before {//齒輪
         content: "\e606";
     };
-    &[name="icon_arrowdown"]:before {
+    &[name="icon_arrowdown"]:before {//下三角形
         content: "\e80b";
     };
-    &[name="icon_bell"]:before {
+    &[name="icon_bell"]:before {//鈴鐺
         content: "\e80f";
     };
-    &[name="icon_notice"]:before {
+    &[name="icon_notice"]:before {//!
         content: "\e816";
     };
-    &[name="icon_subaccount"]:before {
+    &[name="icon_subaccount"]:before {//serv
         content: "\e81a";
     };
     &[name="icon_search"]:before {
         content: "\e81e";
     };
-    &[name="icon_plus"]:before {
+    &[name="icon_plus"]:before {//+
         content: "\e81f";
     };
     &[name="icon_ios"]:before {
@@ -38,22 +38,22 @@
     &[name="icon_android"]:before {
         content: "\e821";
     };
-    &[name="lot_cancel"]:before {
+    &[name="lot_cancel"]:before {//垃圾桶
         content: "\e830";
     };
-    &[name="lot_plus"]:before {
+    &[name="lot_plus"]:before {//+
         content: "\e834";
     };
-    &[name="download_icon_exte"]:before {
+    &[name="download_icon_exte"]:before {//笑臉
         content: "\e872";
     };
-    &[name="transaction_icon_bonus"]:before {
+    &[name="transaction_icon_bonus"]:before {//禮物
         content: "\e87d";
     };
-    &[name="icon_FAQ"]:before {
+    &[name="icon_FAQ"]:before {//?
         content: "\e8a2";
     };
-    &[name="s_left"]:before {
+    &[name="s_left"]:before {//<
         content: "\e6a6";
     };
     &[name="s_up"]:before {
@@ -62,16 +62,16 @@
     &[name="s_down"]:before {
         content: "\e6ad";
     };
-    &[name="s_right"]:before {
+    &[name="s_right"]:before {//>
         content: "\e6b7";
     };
-    &[name="seticon"]:before {
+    &[name="seticon"]:before {//時薪齒輪
         content: "\e657";
     };
     &[name="volumeup"]:before {
         content: "\e867";
     };
-    &[name="drag"]:before {
+    &[name="drag"]:before {//menu
         content: "\e6e8";
     };
     &[name="volume_off"]:before {
@@ -101,52 +101,52 @@
     &[name="arrowL"]:before {
         content: "\e608";
     };
-    &[name="o"]:before {
+    &[name="o"]:before {//笑臉
         content: "\e617";
     };
-    &[name="o1"]:before {
+    &[name="o1"]:before {//O
         content: "\e631";
     };
-    &[name="o2"]:before {
+    &[name="o2"]:before {//star
         content: "\e934";
     };
-    &[name="jingziqi"]:before {
+    &[name="jingziqi"]:before {//ooxx
         content: "\e734";
     };
-    &[name="o3"]:before {
+    &[name="o3"]:before {//O
         content: "\e60b";
     };
-    &[name="Basket-Ball"]:before {
+    &[name="Basket-Ball"]:before {//O bk
         content: "\ecc9";
     };
-    &[name="o4"]:before {
+    &[name="o4"]:before {//star bk
         content: "\e61d";
     };
-    &[name="huaban"]:before {
+    &[name="huaban"]:before {//banner
         content: "\e697";
     };
     &[name="chatroom"]:before {
         content: "\e7a2";
     };
-    &[name="caomei"]:before {
+    &[name="caomei"]:before {//草沒
         content: "\e678";
     };
-    &[name="chengzi"]:before {
+    &[name="chengzi"]:before {//橙
         content: "\e679";
     };
-    &[name="bingqilin"]:before {
+    &[name="bingqilin"]:before {//iceCream
         content: "\e676";
     };
-    &[name="dangao"]:before {
+    &[name="dangao"]:before {//cake
         content: "\e67a";
     };
-    &[name="hanbaobao"]:before {
+    &[name="hanbaobao"]:before {//漢堡
         content: "\e67b";
     };
-    &[name="xihongshi"]:before {
+    &[name="xihongshi"]:before {//橙 bk
         content: "\e67c";
     };
-    &[name="tusi"]:before {
+    &[name="tusi"]:before {//吐司
         content: "\e67d";
     };
     &[name="fishing"]:before {
@@ -182,13 +182,13 @@
     &[name="M"]:before {
         content: "\e6c7";
     };
-    &[name="undo"]:before {
+    &[name="undo"]:before {//ref
         content: "\eca4";
     };
     &[name="Colse"]:before {
         content: "\e674";
     };
-    &[name="renew"]:before {
+    &[name="renew"]:before {//ref
         content: "\e646";
     };
     &[name="colse"]:before {

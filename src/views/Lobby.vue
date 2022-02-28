@@ -16,15 +16,27 @@ export default {
   data(){
     return{
       gameList:[
-      { icon: "Basket-Ball", ch: "投籃遊戲", en: "Basketball",link:'/Basketball' },
-      { icon: "jingziqi", ch: "井字遊戲", en: "OOXX",link:'/OOXX' },
-      { icon: "huaban", ch: "響應滾動圖", en: "ScrollBanner",link:'/Banner' },
-      { icon: "chatroom", ch: "聊天室", en: "Chatroom",link:'/Chatroom' },
-      { icon: "fishing", ch: "天才釣手", en: "Fishing",link:'/Fishing' },
-      { icon: "Solitaire", ch: "新接龍", en: "Freecell",link:'/Solitaire' },
+      { icon: "Basket-Ball", ch: "投籃遊戲", en: "Basketball",link:'/basketball' },
+      { icon: "jingziqi", ch: "井字遊戲", en: "OOXX",link:'/ooxx' },
+      { icon: "huaban", ch: "響應滾動圖", en: "ScrollBanner",link:'/banner' },
+      { icon: "chatroom", ch: "聊天室", en: "Chatroom",link:'/chatroom' },
+      { icon: "fishing", ch: "天才釣手", en: "Fishing",link:'/about' },
+      { icon: "drag", ch: "表格拖移", en: "TableDrag",link:'/table' },
+      { icon: "Solitaire", ch: "新接龍", en: "Freecell",link:'/solitaire' },
       ]
     }
   },
+  methods:{
+    makeadd(x){
+      return function(y){
+        return x + y
+      }
+    }
+  },
+  mounted(){
+    var add = this.makeadd(5)
+    console.log(add(2));
+  }
 }
 
 </script>

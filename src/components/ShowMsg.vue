@@ -1,17 +1,25 @@
 <template>
-    <div class="showMsg lightBox" v-if="showMsg">
+    <div class="showMsg lightBox" v-if="showMsg" @click.self="closeMsgFun">
         <div class="showMsg__info">
-            <div v-html="html"></div>
+            <div class="h3">
+                <lottie-vue-player 
+                    src="https://assets6.lottiefiles.com/packages/lf20_z0haofpa.json" 
+                    background="transparent" 
+                    style="width: 25px; height:25px; margin-right: 5px;"
+                    />
+                    {{title}}
+            </div>
+            <div class="showMsg__text" v-html="html"></div>
             <div class="showMsg__btn">
                 <button @click="showMsgFun" v-if="otherBtn">
                     {{otherBtn}}
                 </button>
                 <template v-else>
-                    <button @click="showMsgFun">
-                        <iconFont name="btn_ok" />
+                    <button v-if="showCancel" @click="closeMsgFun" class="Close">
+                        Close
                     </button>
-                    <button v-if="showCancel" @click="closeMsgFun">
-                        <iconFont name="btn_cancel" />
+                    <button @click="showMsgFun">
+                        OK
                     </button>
                 </template>
             </div>
@@ -22,7 +30,8 @@
 <script>
 export default {
     created(){
-        this.$bus.$on('showMsg',(msg, fun, cancel, otherBtn) =>{
+        this.$bus.$on('showMsg',(title, msg, fun, cancel, otherBtn) =>{
+        this.title = title
         this.html = msg
         this.showMsg = true
         this.fun = fun
@@ -32,6 +41,7 @@ export default {
     },
     data(){
       return {
+        title:'',
         html:'',
         fun:undefined,
         showMsg:false,
@@ -62,46 +72,69 @@ export default {
 
 <style lang="scss">
 .showMsg{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     &__info {
-        background: url('/images/bg/popup_bg.png');
+        position: relative;
+        border-radius: 15px;
+        background:#fff;
         width: 80%;
         max-width: 400px;
-        background-size: 100% 100%;
-        height: 250px;
-        padding: 50px 10px 20px;
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
+        height: 190px;
         text-align: center;
-        div {
-            word-break:break-word;
-            width: 90%;
-            color:$baseFont;
-            h2{
-                color: $baseFocus;
-                font-size: 18px;
-                padding-bottom: 10px;
-            }
+        overflow: hidden;
+        color:#fff;
+        .h3{
+            height: 40px;
+            background: #f38dc0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-    }
-    &__btn {
-            width: 90%;
+        .showMsg__text, .showMsg__btn {
             display: flex;
             align-items:  center;
             text-align: center;
             justify-content: center;
-         }
+            padding:15px;
+        }
+    }
+    &__text {
+        word-break:break-word;
+        height: 53%;
+        color:rgb(123, 120, 133);
+        font-size: 13px;
+        p{
+            font-weight: 900;
+            font-size: 14px;
+            padding: 0 2px;
+            color: rgb(211, 128, 207);
+        }
+    }
+    &__btn {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
         button {
-            width: 50%;
-            height: 45px;
-            @include btn_popup();
-            color:$btnFont;
-            margin-left: 5px;
-            font-size: 18px;
-            i{
-                color:$btnFont;
-                font-size: 20px;
+            width:100px;
+            margin: 0 5px;
+            background: #ffc400;
+            border: 1px solid #ffc400;
+            &:hover{
+                border: 1px solid #f39519;
+                background: #f39519;
+            }
+            &.Close{
+                background: #fff;
+                color: #6b6b6b;
+                border-color: #6b6b6b;
+                &:hover{
+                    background: #bdbdbd;
+                }
             }
         }
 }

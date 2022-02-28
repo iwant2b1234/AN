@@ -2,15 +2,17 @@
   <div class="switch-button-control" @click="toggle">
     <div class="switch-button" :class="[{ enabled: getData }]">
       <div class="button"></div>
-      <span class="on swbtn" v-if="getData">{{languageConfig.common_on}}</span>
-      <span class="off swbtn" v-else>{{languageConfig.common_off}}</span>
+      <span class="on swbtn" v-if="getData">
+        ON
+      </span>
+      <span class="off swbtn" v-else>
+        OFF
+      </span>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex"
-
 export default {
   props: ["value", "disabled", "trueValue", "falseValue"],
   data() {
@@ -19,7 +21,6 @@ export default {
     };
   },
   computed: {
-    ...mapState(["languageConfig"]),
     getData() {
       if (this.value == undefined) {
         return false;
@@ -43,22 +44,9 @@ export default {
       if (this.disabled) {
         return;
       }
-      let dataVal;
-      if (this.value == "1") {
-        //关
-        dataVal = "0";
-      } else {
-        //开
-        dataVal = "1";
-      }
-    if(this.trueValue != undefined && this.falseValue != undefined){
-        dataVal = this.value==this.falseValue?this.trueValue:this.falseValue
-    }
-      this.$emit("input", dataVal);
       this.$emit("change");
     }
   },
-  
 };
 </script>
 
@@ -68,45 +56,41 @@ export default {
   margin: 0 auto;
 }
 .switch-button {
-  height: 20px;
-  width: 65px;
-  border-radius: 5px;
+  height: 23px;
+  width: 60px;
+  border-radius:50px;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   position: relative;
-  border: 1px solid #c7c7c7;
-
+  padding:3px 5px;
+  border: 1px solid rgba($color: #fff, $alpha: .5);
   &.enabled {
-    border: 1px solid #349bc3;
-    padding-right: 20px;
+    color: #fff;
+    background:#87c57f;;
+    border-color: transparent;
+    box-shadow: 0 0 3px 3px rgba($color: #87c57f, $alpha: .5);
     .button {
-      background: #349bc3;
-      transform: translateX(33px);
-      margin-left: 1px;
+      background: #fff;
+      transform: translateX(35px);
     }
   }
   .button {
-    height: 18px;
-    width: 30px;
-    border-radius: 5px;
-    background: #c7c7c7;
+    height: 15px;
+    width: 15px;
+    border-radius: 10px;
+    background: rgba($color: #fff, $alpha: .5);
     transition: all 0.2s ease-in-out;
-    margin-left: -1px;
   }
   span {
     font-size: 12px;
-  }
-  .on {
     position: absolute;
-    top: 0px;
-    line-height: 19px;
-    left: 5px;
-  }
-  .off {
-    position: absolute;
-    top: 0px;
-    right: 4px;
-    line-height: 19px;
+    top: 5px;
+    &.on {
+      left: 10px;
+    }
+    &.off {
+      right: 10px;
+    }
   }
 }
 </style>
