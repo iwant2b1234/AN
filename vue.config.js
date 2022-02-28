@@ -13,7 +13,7 @@ const path = require('path');
 module.exports = {
     publicPath: './',
     // productionSourceMap:process.env.VUE_APP_BASIC_TYPE=='dev'?true:false,
-    outputDir: 'docs',
+    outputDir: 'dist',
     css: {
       loaderOptions: {
         // sass: {
