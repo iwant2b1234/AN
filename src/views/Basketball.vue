@@ -8,9 +8,9 @@
             <div class="ballF">
                 <div class="ball"
                 ref="ball"
-                    @mousedown="mousedown"
-                    @touchstart="mousedown"
-                    @touchmove="mousemove"
+                    @mouseover="mousedown"
+                    @touchstart="touchstart"
+                    @mousemove="mousemove"
                     @touchend="mouseleave"
                     @mouseleave="mouseleave"
                     :style="ballStyle" 
@@ -67,6 +67,9 @@ export default {
         mouseleave(){
             console.log('mouseleave');
             this.flag = false
+        },
+        touchstart(){
+            console.log('touchstart');
         }
     },
     beforeDestroy() {

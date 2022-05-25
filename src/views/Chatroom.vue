@@ -1,5 +1,5 @@
 <template>
-  <div class="chatroom" @click.self="menu = false">
+  <div class="chatRoom" @click.self="menu = false">
     <div class="talk">
         <h3>
             <p>
@@ -139,7 +139,7 @@ $med2: #f9748f;
 $dark: #874da2;
 $dark1:#c43a30;
 
-.chatroom {
+.chatRoom {
     background-image: linear-gradient(to right, $dark 0%, $dark1 49%, $med1 100%);
     width: 100%;
     height: 100vh;

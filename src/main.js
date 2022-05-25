@@ -9,6 +9,20 @@ import * as platform from '@/utils/platform'
 import LottieVuePlayer from "@lottiefiles/vue-lottie-player";
 Vue.use(LottieVuePlayer);
 
+/* import the fontawesome core */
+import { library } from '@fortawesome/fontawesome-svg-core'
+/* import specific icons */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faBarcode,faAt ,faPhone, faCommentSms, faCode, faPenNib, faFaceSmile,
+  faHeart,faFaceFrown,faFaceMeh} from '@fortawesome/free-solid-svg-icons'/* import font awesome icon component */
+import { faLine, faVuejs, faNodeJs, faCss3, faGitAlt } from '@fortawesome/free-brands-svg-icons'
+/* add icons to the library */
+library.add(faBarcode,faAt, faLine, faPhone, faCommentSms, faCode, faPenNib, 
+  faVuejs, faNodeJs, faCss3, faGitAlt,faHeart, faFaceSmile,faFaceMeh,faFaceFrown)
+
+/* add font awesome icon component */
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
 import VCalendar from 'v-calendar';
 import Calendar from 'v-calendar/lib/components/calendar.umd'
 import DatePicker from 'v-calendar/lib/components/date-picker.umd'
@@ -17,6 +31,9 @@ Vue.use(VCalendar, {
 });
 Vue.component('calendar', Calendar)
 Vue.component('date-picker', DatePicker)
+
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+Vue.use(VueAwesomeSwiper)
 
 import Vuelidate from "vuelidate";
 import VuelidateErrorExtractor, { templates } from "vuelidate-error-extractor";

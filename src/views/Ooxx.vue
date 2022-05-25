@@ -15,10 +15,12 @@
     </ul>
     <transition name="bounce">
       <div v-if="win" class="win">
-        <p>
-          <icon :name="win" :class="setColor(win)"/>WIN!
-        </p>
-        <button @click="playAgain">play again</button>
+        <div class="box">
+          <p>
+            <icon :name="win" :class="setColor(win)"/>WIN!
+          </p>
+          <button @click="playAgain">play again</button>
+        </div>
       </div>
     </transition>
   </div>
@@ -142,8 +144,9 @@ export default {
     font-size: 90px;
     color: rgb(33, 111, 114);
     text-shadow: 2px 3px 0 #fff;
-    text-align: center;
-    padding-top: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     button{
       margin-top: 20px;
       border: 0;

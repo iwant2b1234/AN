@@ -25,6 +25,7 @@ module.exports = {
     },
     configureWebpack: {
     plugins: [
+      // "~/plugins/lottie-vue-player.client.js"
       // new CopyWebpackPlugin({
       //   patterns: [
       //       // {
