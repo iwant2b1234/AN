@@ -162,7 +162,8 @@ export default {
             }
         }
     }
-    .profileBox{
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600&family=Noto+Serif+TC:wght@400;500&family=Playfair+Display:ital@1&display=swap');
+.profileBox{
         position: relative;
         z-index: 2;
         width: 90%;
@@ -175,7 +176,7 @@ export default {
                 text-align: initial;
             }
             &,*{
-                font:italic 900 35px/1 serif;
+                font:italic 500 31px/1.2 'Noto Serif JP', serif;
                 @include mobile(){
                     font-size: 26px;
                 }

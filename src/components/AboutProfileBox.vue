@@ -266,7 +266,7 @@ export default {
             }
         }
         h2{
-            font: 900 30px/1.7 cursive;
+            font: 900 30px/1.7 serif;
         }
         #hirebg{
             border: #000 2px solid;

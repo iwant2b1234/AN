@@ -41,9 +41,9 @@ export default {
         return{
             yrararr:[
                 'EDUCATION & SENIORITY',
-                {y:3,n:"DEVELOPER",w:40},
-                {y:5,n:"UI/UX",w:40},
-                {y:2,n:"DESIGN",w:40},
+                {y:3,n:"DEVELOPER",w:30},
+                {y:5,n:"UI/UX",w:30},
+                {y:2,n:"DESIGN",w:30},
                 {y:"復興商工",n:"HIGH SCHOOL"},
                 {y:"文化大學",n:"UNIVERSITY"},
             ],
@@ -53,6 +53,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600&family=Noto+Serif+TC:wght@400;500&family=Playfair+Display:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Noto+Serif+TC:wght@400;500&family=Playfair+Display:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500&family=Playfair+Display:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500&display=swap');
 @import "@/scss/rwd.scss";
 .aboutProfile {
     width: 100%;
@@ -73,7 +77,7 @@ export default {
             @include mobile(){
                 width: 50%; 
             }
-            *{font: 900 15px cursive;}
+            *{font: 100 15px 'Noto Serif JP', serif;}
             p:hover{
                 strong{
                     color: #ff7300;
@@ -89,16 +93,17 @@ export default {
                 position: relative;
                 sub{
                     position: absolute;
-                    font-size: 12px;
                     top: 0;
-                    right: 10px;
+                    right: 5px;
+                    font-size: 12px;
                 }
             }
             small{
                 border-bottom: 1px solid #000;
                 border-top: 1px solid #000;
-                font-size: 12px;
+                font:100 12px/1 'Noto Serif JP', serif;
                 display: block;
+                padding: 2px 0;
             }
             &:first-child{
                 margin-bottom: 20px;
@@ -199,7 +204,7 @@ export default {
                 text-align: initial;
             }
             &,*{
-                font:italic 900 40px/1 cursive;
+                font:italic 900 31px/1.2 'Noto Serif JP', serif;
                 @include mobile(){
                     font-size: 26px;
                 }
@@ -222,6 +227,7 @@ export default {
             line-height: 2;
             font-size: 14px;
             padding-bottom: 10px;
+            font-family: serif;
             span{
                 font-size:400%; /*首字大小*/
                 float: left; /*首字下沉*/

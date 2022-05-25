@@ -248,7 +248,7 @@ export default {
                 > li{
                   width: 33%;
                   text-align: center;
-                  font: 600 15px/1 cursive;
+                  font: 600 15px/1 serif;
                   padding: 10px 0;
                 }
               }
@@ -272,7 +272,7 @@ export default {
                 background: #000;
                 border-radius: 5px;
                 &,*{
-                  font: italic 900 35px cursive;
+                  font: italic 900 35px serif;
                 }
                 span{
                   font-size: 15px;
@@ -281,7 +281,7 @@ export default {
               }
               .title{
                 width: 100%;
-                font: 900 50px/1 cursive;
+                font: 900 50px/1 serif;
                 text-align: center;
                 @include mobile(){
                    font-size: 25px; 

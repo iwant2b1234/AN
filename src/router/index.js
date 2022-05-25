@@ -7,7 +7,7 @@ const router = new VueRouter({
   mode: 'hash',
   routes:[
     {
-      path: '/about',
+      path: '/',
       name: 'About',
       component: () => import('../views/About.vue'),
     },
@@ -41,11 +41,11 @@ const router = new VueRouter({
       name: 'Ooxx',
       component: () => import('../views/Ooxx.vue'),
     },
-    {
-      path: '/',
-      name: 'Lobby',
-      component: () => import('../views/Lobby.vue'),
-    }
+    // {
+    //   path: '/',
+    //   name: 'Lobby',
+    //   component: () => import('../views/Lobby.vue'),
+    // }
   ]
 })
 router.beforeEach((to, from, next) => {
