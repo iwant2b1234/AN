@@ -1,5 +1,5 @@
 <template>
-    <div class="tableLeftMenu">
+    <div class="tableLeftMenu mobile" :style="`display: ${display};`">
         <lottie-vue-player 
             src="https://assets6.lottiefiles.com/packages/lf20_va9zll1u.json" 
             background="transparent"
@@ -25,10 +25,11 @@
 <script>
 import icon from './icon.vue'
 export default {
-    props:['now'],
+    props:['now','open'],
     components: { icon ,},
     data(){
         return{
+            innerWidth:0,
             options: {
                     minimizable: false,
                     playerSize: "standard",
@@ -57,20 +58,54 @@ export default {
             ]
         }
     },
+    computed:{
+        display(){
+            if(this.innerWidth>1025){
+                return 'block'
+            }else{
+                if(this.open){
+                    return 'block'
+                }
+                return 'none'
+            }
+        }
+    },
     methods:{
         getNow(v){
             this.$emit('getNow',v)
+        }
+    },
+    mounted() {
+        const self = this
+        window.onresize = () => {
+            return (() => {
+                self.innerWidth = window.innerWidth
+            })()
         }
     }
 }
 </script>
 <style scoped lang="scss">
+@import "@/scss/rwd.scss";
+
 .tableLeftMenu{
     padding: 10px;
     width: 200px;
     text-align: center;
     // background: rgba($color: #000, $alpha: .2);
     border-right: 1px solid rgba($color: #fff, $alpha: .3);
+    @include pad(){
+        display: none;
+        &.mobile{
+            position: fixed;
+            background: rgba($color: #2f4457, $alpha: .9);
+            height: 100%;
+            z-index: 9;
+        }
+    }
+    .lf-relative{
+        background: transparent;
+    }
     h2{
         padding-bottom: 10px;
         font-size: 12px;

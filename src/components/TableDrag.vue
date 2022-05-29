@@ -176,6 +176,9 @@ export default {
     border-radius: 10px;
     background: rgba($color: #fff, $alpha: .1);
     box-shadow: 1px 1px 10px rgba($color: #000, $alpha: .1);
+    &::-webkit-scrollbar {
+        height: 1em;
+    }
     table{
         text-align: center;
         width: 100%;

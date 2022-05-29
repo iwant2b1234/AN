@@ -69,13 +69,15 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+@import "@/scss/rwd.scss";
+
 .TableSearch{
     padding: 10px 0;
     .timeBlock{
         display: flex;
-        flex-wrap: wrap;
         align-items: center;
         margin-bottom: 10px;
+        flex-wrap: wrap;
     }
     button{
         margin: 0 5px 0 0;
@@ -85,6 +87,9 @@ export default {
         line-height: 32px;
         background: #60bae4;
         font-size: 12px;
+        @include pad(){
+            margin: 5px 5px 0 0;
+        }
         &.ora{
             background: #b184ec;
         }   
@@ -106,12 +111,19 @@ export default {
         align-items: center;
         margin-right:10px;
         width: 250px;
+        overflow: hidden;
+        @include mobile(){
+            width:100%; 
+        }
         i{
             margin-right: 10px;
             color: #c4d0e6;
         }
     }
     .search{
+        @include pad(){
+            width:250px; 
+        }
         input{
             width: 180px;
         }

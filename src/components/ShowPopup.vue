@@ -127,23 +127,24 @@ export default {
         position: relative;
         border-radius: 10px;
         background:#fff;
-        width: 80%;
+        width: 95%;
         max-width: 500px;
         overflow: hidden;
-        padding: 20px 30px;
+        padding: 20px ;
         color:#4c5b5f;
         text-align: left;
         h3{
-            padding:0 0 15px;
-            font-size: 22px;
-            border-bottom: 1px solid #8b8e8f;
+            padding:0 0 10px;
+            font-size: 20px;
+            border-bottom: 1px solid #dbdbdb;
             display: flex;
             justify-content: space-between;
             i{
                 cursor: pointer;
                 font-weight: 100;
+                color: #ffae00;
                 &:hover{
-                    color: #ffc402;
+                    color: #5e5e5e;
                 }
             }
         }
@@ -284,8 +285,8 @@ export default {
             }
             &.Close{
                 background: #fff;
-                color: #000;
-                border-color: #000;
+                color: rgb(77, 77, 77);
+                border-color: rgb(209, 209, 209);
                 &:hover{
                     background: #bdbdbd;
                 }

@@ -1,9 +1,10 @@
 <template>
     <div class="tableDrag">
-        <TableLeftMenu @getNow="getNow" :now="now"/>
+        <TableLeftMenu @getNow="getNow" :now="now" :open="open"/>
         <div class="rightBlock">
-            <TableTopMenu/>
+            <TableTopMenu @opneMenu="opneMenu"/>
             <div class="info">
+                <div class="mobliebg" @click="open=false" :style="`display: ${open?'block':'none'};`"></div>
                 <TableMark :now="now"/>
                 <TableSearch/>
                 <component :is="getComponent" :tableList="tableList" @updateData='updateData'/>
@@ -30,6 +31,7 @@ export default {
     },
     data(){
         return{
+            open:false,
             now:'DragTable',
             tableList:{
                 title:['ID','Title','Time','Levels','Status','Set','Drag'],
@@ -121,6 +123,9 @@ export default {
         }
     },
     methods:{
+        opneMenu(){
+            this.open=!this.open
+        },
         getNow(v){
             this.now = v
         },
@@ -144,6 +149,15 @@ export default {
             width: 95%;
             margin: auto;
         }
+    }
+    .mobliebg{
+        position: fixed;
+        background: rgba($color: #000000, $alpha: .7);
+        width: 100%;
+        height: 100%;
+        z-index: 8;
+        top: 0;
+        left: 0;
     }
 }
 </style>

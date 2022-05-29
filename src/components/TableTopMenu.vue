@@ -1,5 +1,6 @@
 <template>
     <div class="tableTopMenu">
+        <icon class="moblieMenu" name="drag" @click.native="opneMenu" />
         <ul class="left">
             <li v-for="(item, m) in menu" :key="m"
             :class="{'active':nowType==item}"
@@ -14,7 +15,7 @@
                 <icon v-if="item.icon!='account'" :name="item.icon"/>
                 <img v-else src="img/mo.gif"/>
                 <template v-if="item.name">
-                    <p>{{item.name}}
+                    <p class="name">{{item.name}}
                         <span>RD</span>
                     </p>
                 </template>
@@ -137,6 +138,9 @@ export default {
         }, 1);
     },
     methods:{
+        opneMenu(){
+            this.$emit('opneMenu');
+        },
         getPoint(type,i){
             this.noticeList = this.notice
             this.$set(this.noticeList[i],'type',type?false:true)
@@ -170,6 +174,8 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+@import "@/scss/rwd.scss";
+
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
@@ -218,13 +224,22 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .moblieMenu{
+        display: none;
+        @include pad(){
+            display: block;
+            padding: 0 10px;
+            line-height: 50px;
+            border-right: 1px solid rgba($color: #fff, $alpha: .3);
+        }
+    }
     .notice{
         position: absolute;
         right: 0;
         top: 0;
         width: 100%;
         height: 100%;
-        z-index: 1;
+        z-index:9;
         .cloud {
             position: absolute;
             z-index: 1;
@@ -480,6 +495,9 @@ export default {
                     height: 0;
                     overflow: hidden;
                     transition: all .3s;
+                    width: 100px;
+                    right: 0;
+                    z-index: 9;
                     p{
                         transition: all .3s;
                             color: slategrey;
@@ -521,6 +539,11 @@ export default {
                 font-size: 12px;
                 padding-left: 8px;
                 font-weight: 900;
+                &.name{
+                    @include pad(){
+                        display: none;
+                    }
+                }
                 span{
                     display: inline-block;
                     transform: scale(.7);
