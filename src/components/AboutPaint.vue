@@ -44,7 +44,7 @@ export default {
                     {n:'UI/UX',u:['01.png','02.jpg','03.png','04.png','05.png'],t:'photoshop'},
                     // {n:'插畫',u:['m.png','m2.png','m3.png'],t:'procreate'},
                     {n:'手繪',u:['1.jpg'],t:'watercolor'},
-                    {n:'漫畫',u:['v1.jpg','v2.jpg','v3.jpg'],t:'procreate'},
+                    // {n:'漫畫',u:['v1.jpg','v2.jpg','v3.jpg'],t:'procreate'},
                     ]
                 },
             ],
