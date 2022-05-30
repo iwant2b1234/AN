@@ -18,7 +18,7 @@
                         />
                     </template>
                 </date-picker>
-                <icon name="s_right"/>
+                <icon name="s_right" class="s_right"/>
                 <date-picker 
                     v-model="date2" 
                     :update-on-input="false"
@@ -42,7 +42,7 @@
         <div class="timeBlock">
             <div class="search block">
                 <icon name="search"/>
-                <input placeholder="Please enter keywords.."/>
+                <input type="search" placeholder="Please enter keywords.."/>
             </div>
             <button class="ora">Search</button>
         </div>
@@ -110,7 +110,7 @@ export default {
         display: flex;
         align-items: center;
         margin-right:10px;
-        width: 250px;
+        width: 235px;
         overflow: hidden;
         @include mobile(){
             width:100%; 
@@ -118,6 +118,9 @@ export default {
         i{
             margin-right: 10px;
             color: #c4d0e6;
+        }
+        .s_right{
+            margin: 0;
         }
     }
     .search{

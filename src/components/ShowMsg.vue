@@ -2,11 +2,11 @@
     <div class="showMsg lightBox" v-if="showMsg" @click.self="closeMsgFun">
         <div class="showMsg__info">
             <div class="h3">
-                <lottie-vue-player 
+                <!-- <lottie-vue-player 
                     src="https://assets6.lottiefiles.com/packages/lf20_z0haofpa.json" 
                     background="transparent" 
                     style="width: 25px; height:25px; margin-right: 5px;"
-                    />
+                    /> -->
                     {{title}}
             </div>
             <div class="showMsg__text" v-html="html"></div>

@@ -1,8 +1,8 @@
 <template>
     <div class="talkFt">
-        <div class="file">
-            <input type="file" @change="getFile" ref="files" @click="openBox(false)"/>
-            <icon name="icon_plus" />
+        <div class="file" @click="openAdd(true)">
+            <!-- <input type="file" @change="getFile" ref="files" @click="openBox(false)"/> -->
+            <icon name="icon_plus"/>
         </div>
         <div class="textarea">
             <textarea placeholder="輸入訊息" v-model="text" @keydown="keyText" @focus="openBox(false)"></textarea>
@@ -36,6 +36,9 @@ export default {
             // const vm = this;
             // console.log(vm.$refs.files.files[0]);
             this.platform.showToast('opps!這功能沒辦法寫>_<')
+        },
+        openAdd(val){
+            this.$emit("openAdd",val)
         },
         openBox(val){
             this.$emit("openBox",val)

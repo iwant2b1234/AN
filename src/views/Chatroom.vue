@@ -11,31 +11,42 @@
         </h3>
         <div :class="['bottom',`bg-${nowBg}`]" @click="menu = false">
             <div class="info" ref="block" :style="`height: calc( 100% - ${height}px );`">
-                <TalkBox v-for="(item, i) in talk" :key="i" :talkText="item" :userFlag="userFlag" :userIndex="userIndex"/>
+                <TalkBox v-for="(item, i) in talk" :key="i" 
+                :talkText="item" :userFlag="userFlag" :userIndex="userIndex"
+                :moneyTalkListlength='moneyTalkList.length-1'
+                />
             </div>
             <icon v-if="goDown" class="goDown" name="Arrow-down" @click.native="$refs.block.scrollTop = scrollTop"/>
             <TalkFtBox v-if="iconBox" @selectIcon="selectIcon"/>
-            <TalkFt :textIcon="textIcon" @send="send" @openBox="openBox" @selectIcon="selectIcon"/>
+            <TalkFtAdd v-if="iconAdd" @closeHB="closeHB"/>
+            <TalkFt :textIcon="textIcon" @send="send" @openAdd="openAdd" @openBox="openBox" @selectIcon="selectIcon"/>
         </div>
+        <TalkFtHB v-if="showHB" @closeHB="closeHB" @send="send"/>
     </div>
   </div>
 </template> 
 
 <script>
+import TalkFtHB from "@/components/TalkFtHB.vue";
 import TalkBox from "@/components/TalkBox.vue";
 import TalkFtBox from "@/components/TalkFtBox.vue";
 import TalkMenu from "@/components/TalkMenu.vue";
 import TalkFt from "@/components/TalkFt.vue";
+import TalkFtAdd from "@/components/TalkFtAdd.vue";
 export default {
     components: {
         TalkBox,
+        TalkFtAdd,
         TalkMenu,
         TalkFtBox,
-        TalkFt
+        TalkFt,
+        TalkFtHB
     },
     data(){
         return {
-            height:60,
+            dataHB:{},
+            showHB:false,
+            iconAdd:false,
             textIcon:'',
             nowBg:0,
             nowTime:'',
@@ -55,20 +66,29 @@ export default {
         
         }
     },
-    watch:{
-        iconBox(val){
-            if(val){
-                this.height = 170
+    computed:{
+        height(){
+            if(this.iconBox||this.iconAdd){
+                return 180
             }else{
-                this.height = 60
+                return 70
             }
         }
     },
     methods: {
+        closeHB(v){
+            this.showHB = v
+            this.iconAdd=false
+        },
         selectIcon(val){
             this.textIcon = val
         },
+        openAdd(){
+            this.iconBox = false
+            this.iconAdd=!this.iconAdd
+        },
         openBox(val){
+            this.iconAdd=false
             if(val){
                 this.iconBox = !this.iconBox
             }else{
@@ -86,6 +106,10 @@ export default {
             if(!this.userFlag){
                 this.userIndex++
             }
+            if(val.hb){
+                this.moneyTalkList.splice(this.userIndex,this.userIndex,'謝謝！！！！！')
+            }
+            
             this.talk.push(val)
             this.$nextTick(function () {
                 this.scrollbottom()
@@ -96,7 +120,7 @@ export default {
             this.nowBg = i
         },
         moneyTalk(){
-            if(this.userIndex > 5||this.userFlag){
+            if(this.userIndex > (this.moneyTalkList.length-1)||this.userFlag){
                 return
             }
             this.userFlag = true
@@ -105,9 +129,9 @@ export default {
             let ms = nowTime.getMinutes();
             this.nowTime = `${hr}:${ms<10?`0${ms}`:ms}`
             let fistTalk = { content:this.moneyTalkList[this.userIndex], time:this.nowTime, id:this.userIndex }
-            if(this.userIndex==1){
-                fistTalk.content = `${this.talk[1].content}? ` + fistTalk.content
-            }
+            // if(this.userIndex==1){
+            //     fistTalk.content = `${this.talk[1].content}? ` + fistTalk.content
+            // }
             this.talk.push(fistTalk)
             setTimeout(() => {
                 this.userFlag = false
@@ -133,14 +157,15 @@ export default {
 
 <style lang="scss">
 $light: #fdfbfb;
-$med: #ea6982;
+$med: #cff1ef;
 $med1: #fe9a8b;
-$med2: #f9748f;
-$dark: #874da2;
-$dark1:#c43a30;
+$med2: #cff1ef;
+$dark: #cff1ef;
+$dark1:#f9748f;
 
 .chatRoom {
-    background-image: linear-gradient(to right, $dark 0%, $dark1 49%, $med1 100%);
+    background-image: linear-gradient(to right, $dark 0%, $med1 49%, $med 100%);
+    // background: #cff1ef;
     width: 100%;
     height: 100vh;
     display: flex;
@@ -148,9 +173,10 @@ $dark1:#c43a30;
     justify-content: center;
     text-align: center;
     .talk{
+        position: relative;
         width: 90%;
         margin: auto;
-        border-radius: 10px;
+        border-radius: 20px;
         overflow: hidden;
         max-width: 430px;
         background: #fff;
@@ -171,12 +197,12 @@ $dark1:#c43a30;
             background: #fff;
             display: flex;
             align-items: center;
-            height: 50px;
+            height: 60px;
             padding: 0 20px;
             justify-content: space-between;
             color: #6d6a7e;
             position: relative;
-            box-shadow: 1px 1px 5px rgba(0 ,0 ,0 ,.1);
+            box-shadow: 1px 1px 15px rgba(0 ,0 ,0 ,.1);
             z-index: 2;
             p{
                 display: flex;
@@ -199,7 +225,7 @@ $dark1:#c43a30;
         }
         .bottom{
             height: calc( 100% - 50px );
-            background: #eee;
+            background: #f7f9fb;
             position: relative;
             overflow: hidden;
             .goDown{
@@ -215,15 +241,21 @@ $dark1:#c43a30;
                 bottom: 65px;
                 right: 5px;
             }
+            &.bg-0{
+                .content{
+                    background:$med1;
+                    color: #fff;
+                    .load {
+                        background: #fff;
+                    }
+                }
+            }
             &.bg-1{
                 background-image: url('../assets/bg1.jpeg');
                 background-size: cover;
                 .content{
                     background:#9e6d37;
                     color: #fff;
-                    &::before{
-                        border-color: #9e6d37 transparent transparent transparent;
-                    }
                     .load {
                         background: #fff;
                     }
@@ -242,9 +274,6 @@ $dark1:#c43a30;
                 .content{
                     background:#f9f797;
                     color: #544225;
-                    &::before{
-                        border-color: #f9f797 transparent transparent transparent;
-                    }
                     .load {
                         background: rgb(176, 197, 136);
                     }

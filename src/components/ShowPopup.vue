@@ -2,7 +2,7 @@
     <div class="ShowPopup lightBox" @click.self="close">
         <div class="ShowPopup__info">
             <h3 @click="close">
-                INFO
+                SET
                 <icon name="delete"/>
             </h3>
             <ul class="ShowPopup__text">
@@ -125,26 +125,26 @@ export default {
     text-align: center;
     &__info {
         position: relative;
-        border-radius: 10px;
+        border-radius: 20px;
         background:#fff;
         width: 95%;
         max-width: 500px;
         overflow: hidden;
-        padding: 20px ;
         color:#4c5b5f;
         text-align: left;
         h3{
-            padding:0 0 10px;
-            font-size: 20px;
-            border-bottom: 1px solid #dbdbdb;
+            padding:15px 25px;
+            font-size: 16px;
+            background: rgb(187, 138, 199);
             display: flex;
+            color: #fff;
             justify-content: space-between;
             i{
                 cursor: pointer;
                 font-weight: 100;
-                color: #ffae00;
+                color: #ffffff;
                 &:hover{
-                    color: #5e5e5e;
+                    color: #ffa600;
                 }
             }
         }
@@ -161,7 +161,7 @@ export default {
         min-height: 100px;
         color:rgb(123, 120, 133);
         font-size: 14px;
-        padding:10px;
+        padding:10px 30px;
         display: flex;
         align-items:  center;
         flex-wrap: wrap;
@@ -234,6 +234,7 @@ export default {
                 color: #9e9e9e;
                 width: 70px;
                 position: relative;
+                font-family: monospace;
                 span{
                     color: red;
                     position: absolute;
@@ -273,7 +274,8 @@ export default {
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            margin:20px auto 0;
+            padding:15px 20px;
+            border-top: 1px solid #eee;
         }
         button {
             width:100px;

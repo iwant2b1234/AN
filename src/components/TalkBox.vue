@@ -1,26 +1,33 @@
 <template>
-    <div :class="['talkBox',{user:talkText.user}]">
-        <img src="img/mo.gif" v-if="!talkText.user"/>
-        <div class="content" v-if="!talkText.user && userIndex == talkText.id && userFlag">
-            <div v-for="(item, i) in 3" :key="i" class="load"></div>
-        </div>
-        <div :class="['content',{'img':talkText.id == 3}]" v-else>
-            <p v-html="talkText.content"></p>
-            <span><small v-if="talkText.user&&read">已讀</small><br>{{talkText.time}}</span>
-        </div>
+    <div :class="['talkBox',{user:talkText.user},{'hb':talkText.hb}]">
+            <img src="img/mo.gif" v-if="!talkText.user"/>
+            <div class="content" v-if="!talkText.user && userIndex == talkText.id && userFlag">
+                <div v-for="(item, i) in 3" :key="i" class="load"></div>
+            </div>
+            <div :class="['content',{'img':talkText.content.indexOf('img')>-1}]" v-else>
+                <template v-if="talkText.hb">
+                    <h1>{{hbType[talkText.now]}}</h1>
+                    <h2><strong>NT＄</strong>{{talkText.money}}</h2>
+                    <p v-if="talkText.content.length>0" v-html="talkText.content"></p>
+                    <button>查看紅包</button>
+                </template>
+                <p v-else v-html="talkText.content"></p>
+                <span><small v-if="talkText.user&&read">已讀</small><br>{{talkText.time}}</span>
+            </div>
     </div>
 </template> 
 
 <script>
 export default {
-    props:['talkText','userFlag',"userIndex"],
+    props:['talkText','userFlag',"userIndex",'moneyTalkListlength'],
     data(){
         return{
+            hbType:['福','賀','祝'],
             read:false
         }
     },
     mounted(){
-        if(this.userIndex>5){
+        if(this.userIndex>this.moneyTalkListlength){
             this.read = false
         }else{
             setTimeout(() => {
@@ -66,7 +73,7 @@ export default {
     padding: 5px 0;
     .content {
         background:#fff;
-        border-radius: 20px;
+        border-radius:0 20px 20px 20px;
         position: relative;
         padding: 10px 15px;
         max-width: 190px;
@@ -89,22 +96,12 @@ export default {
             right: -35px;
             bottom: 0;
         }
-        &::before{
-            content: '';
-            width: 0;
-            height: 0;
-            position: absolute;
-            left: 0;
-            top: 0;
-            border-style: solid;
-            border-width: 20px 20px 0 0;
-            border-color: #fff transparent transparent transparent;
-        }
     }
     &.user{
         align-items: center;
         justify-content: flex-end;
         .content{
+            border-radius: 20px 0 20px 20px;
             margin-top:0;
             background: #74d0c8 !important;
             color: #fff !important;
@@ -120,12 +117,65 @@ export default {
                     text-align: right;
                 }
             }
+        }
+    }
+    &.hb{
+        .content{
+            text-align: center;
+            background: rgb(201, 36, 36) !important;
+            width: 150px;
+            border-radius: 10px;
+            padding: 10px 0 0;
+            position: relative;
             &::before{
-                left: initial;
-                right: 0;
-                border-width: 0 20px 20px 0;
-                border-color: transparent #74d0c8 transparent transparent !important;
+                z-index: 1;
+                content: '';
+                width: 0;
+                height: 0;
+                position: absolute;
+                top:0;
+                right:5px;
+                margin: auto;
+                border-style: solid;
+                border-width: 50px 70px 0 70px;
+                border-color: #a11c1c transparent transparent transparent;
             }
+        }
+        h2{
+            padding: 5px 0;
+            text-shadow: 1px 1px 5px rgba($color: #000, $alpha: .5s);
+            font: italic 900 30px monospace;
+            strong{
+                font-size: 15px;
+            }
+        }
+        p{
+            margin-bottom: 10px;
+        }
+        h1{
+            font:900 22px serif;
+            text-shadow: 1px 1px 0 rgba($color: #fff, $alpha: .9s);
+            box-shadow: 1px 1px 5px rgba($color: #000, $alpha: .5s);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width:50px;
+            height:50px;
+            border-radius: 100px;
+            color: rgb(0, 0, 0);
+            margin: auto;
+            background: #ffae00;
+            border: 3px solid rgb(255, 255, 255);
+            z-index: 2;
+            position: relative;
+        }
+        button{
+            background: transparent;
+            border-radius: 0;
+            border-top: rgba($color: #fff, $alpha: .3) solid 1px;
+            width: 100%;
+            font-size: 12px;
+            padding:5px 0;
         }
     }
 }

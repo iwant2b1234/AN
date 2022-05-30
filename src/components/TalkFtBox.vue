@@ -32,7 +32,7 @@ ul{
     background: rgba($color: #fff, $alpha: .6);
     width: 100%;
     padding: 10px;
-    box-shadow: 1px 1px 5px #ddd;
+    box-shadow: 1px 1px 15px #ddd;
     display: flex;
     flex-wrap: wrap;
     li {
