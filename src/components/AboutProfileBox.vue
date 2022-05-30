@@ -352,7 +352,7 @@ export default {
             opacity: 1;
             cursor: inherit;
             width: 100%;
-            min-height: 65px;
+            min-height: 68px;
             height: auto;
             color: #fff;
             font-size: 12px;

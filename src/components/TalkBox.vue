@@ -9,7 +9,7 @@
                     <h1>{{hbType[talkText.now]}}</h1>
                     <h2><strong>NT＄</strong>{{talkText.money}}</h2>
                     <p v-if="talkText.content.length>0" v-html="talkText.content"></p>
-                    <button>查看紅包</button>
+                    <button @click="openHBdetailed">查看紅包</button>
                 </template>
                 <p v-else v-html="talkText.content"></p>
                 <span><small v-if="talkText.user&&read">已讀</small><br>{{talkText.time}}</span>
@@ -24,6 +24,11 @@ export default {
         return{
             hbType:['福','賀','祝'],
             read:false
+        }
+    },
+    methods:{
+        openHBdetailed(){
+            this.$emit('openHBdetailed',this.talkText)
         }
     },
     mounted(){
@@ -119,6 +124,28 @@ export default {
             }
         }
     }
+    
+@keyframes slideLeft {
+	0% {
+		transform: translateX(150%);
+	}
+	50%{
+		transform: translateX(-8%);
+	}
+	65%{
+		transform: translateX(4%);
+	}
+	80%{
+		transform: translateX(-4%);
+	}
+	95%{
+		transform: translateX(2%);
+	}			
+	100% {
+		transform: translateX(0%);
+	}
+}
+
     &.hb{
         .content{
             text-align: center;
@@ -127,6 +154,7 @@ export default {
             border-radius: 10px;
             padding: 10px 0 0;
             position: relative;
+            animation: slideLeft 1s ease-in-out;
             &::before{
                 z-index: 1;
                 content: '';
@@ -154,17 +182,17 @@ export default {
         }
         h1{
             font:900 22px serif;
-            text-shadow: 1px 1px 0 rgba($color: #fff, $alpha: .9s);
-            box-shadow: 1px 1px 5px rgba($color: #000, $alpha: .5s);
             display: flex;
             justify-content: center;
             align-items: center;
             width:50px;
             height:50px;
             border-radius: 100px;
-            color: rgb(0, 0, 0);
             margin: auto;
+            text-shadow: 1px 1px 0 rgba($color: #fff, $alpha: .9s);
+            box-shadow: 1px 1px 5px rgba($color: #000, $alpha: .5s);
             background: #ffae00;
+            color: rgb(0, 0, 0);
             border: 3px solid rgb(255, 255, 255);
             z-index: 2;
             position: relative;

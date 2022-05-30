@@ -63,7 +63,7 @@ export default {
     },
     methods:{
         openMsg(){
-          this.platform.showMsg('Try It','試試改變視窗大小，手機版可左右拖移換頁')
+          this.platform.showMsg('Try It','手機版可左右拖移換頁')
         },
         handleMouseDown(event){
           if(!this.scrollStop){

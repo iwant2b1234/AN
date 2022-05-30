@@ -14,6 +14,7 @@
                 <TalkBox v-for="(item, i) in talk" :key="i" 
                 :talkText="item" :userFlag="userFlag" :userIndex="userIndex"
                 :moneyTalkListlength='moneyTalkList.length-1'
+                @openHBdetailed="openHBdetailed"
                 />
             </div>
             <icon v-if="goDown" class="goDown" name="Arrow-down" @click.native="$refs.block.scrollTop = scrollTop"/>
@@ -21,7 +22,7 @@
             <TalkFtAdd v-if="iconAdd" @closeHB="closeHB"/>
             <TalkFt :textIcon="textIcon" @send="send" @openAdd="openAdd" @openBox="openBox" @selectIcon="selectIcon"/>
         </div>
-        <TalkFtHB v-if="showHB" @closeHB="closeHB" @send="send"/>
+        <TalkFtHB v-if="showHB" @closeHB="closeHB" @send="send" :HBdetailed="HBdetailed"/>
     </div>
   </div>
 </template> 
@@ -40,12 +41,13 @@ export default {
         TalkMenu,
         TalkFtBox,
         TalkFt,
-        TalkFtHB
+        TalkFtHB,
     },
     data(){
         return {
             dataHB:{},
             showHB:false,
+            HBdetailed:false,
             iconAdd:false,
             textIcon:'',
             nowBg:0,
@@ -62,7 +64,7 @@ export default {
                             "我喜歡吃🍖🍖，你勒",
                             "<img src='img/line.gif' class='line'/>",
                             "......",
-                            "喔 我要去洗澡了👋👋👋"]
+                            "我要去洗澡了👋👋👋"]
         
         }
     },
@@ -76,9 +78,14 @@ export default {
         }
     },
     methods: {
+        openHBdetailed(v){
+            this.showHB = true
+            this.HBdetailed = v
+        },
         closeHB(v){
             this.showHB = v
-            this.iconAdd=false
+            this.iconAdd= false
+            this.HBdetailed = false
         },
         selectIcon(val){
             this.textIcon = val
@@ -106,8 +113,10 @@ export default {
             if(!this.userFlag){
                 this.userIndex++
             }
-            if(val.hb){
-                this.moneyTalkList.splice(this.userIndex,this.userIndex,'謝謝！！！！！')
+            if(this.moneyTalkList.length-1!=this.userIndex){
+                if(val.hb){
+                    this.moneyTalkList.splice(this.userIndex,this.userIndex,'謝謝！！！！！')
+                }
             }
             
             this.talk.push(val)
