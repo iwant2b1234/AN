@@ -23,7 +23,7 @@
             <span @click="closeHB">x</span>
             <h2><strong>NT＄</strong>{{HBdetailed.money}}</h2>
             <h1>{{hb[HBdetailed.now]}}</h1>
-            <p>{{HBdetailed.content}}<br><small>送給 Ｍr.Money 的紅包</small> </p>
+            <p>{{HBdetailed.content}}<br><small>送給 Ｍr.Money 🐶 的紅包</small> </p>
             <div class="before"></div>
             <div class="after"></div>
         </div> 
