@@ -20,7 +20,7 @@
     "core-js": "^3.6.5",
     "crypto-js": "^4.0.0",
     "lodash": "^4.17.21",
-    "luxon": "^2.0.1",
+    "luxon": "^2.5.2",
     "numeral": "^2.0.6",
     "swiper": "^5.4.5",
     "swiper-vue2": "^1.0.9",
